@@ -8,14 +8,18 @@ import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.stream.Stream;
 
-public class ArrayOfDoubles extends TaskServiceImpl {
-    static void arrayOfDoubles (double[] array) {
+import static java.util.Arrays.stream;
 
-        Stream<Double> stream1 = (Stream<Double>) Arrays.stream(array);
-        double max = stream1.mapToDouble(Double::doubleValue).max().getAsDouble();
-        double min = stream1.mapToDouble(Double::doubleValue).min().getAsDouble();
-        double sum = stream1.mapToDouble(Double::doubleValue).sum();
-        OptionalDouble average = stream1.mapToDouble(Double::doubleValue).average();
-        System.out.println(max + " " + min + " " + sum + " " + average);
+public class ArrayOfDoubles extends TaskServiceImpl {
+
+    public static void arrayOfDoubles (Double[] array) {
+
+        double max = Arrays.stream(array).mapToDouble(Double::doubleValue).max().getAsDouble();
+        double min = Arrays.stream(array).mapToDouble(Double::doubleValue).min().getAsDouble();
+        double sum = Arrays.stream(array).mapToDouble(Double::doubleValue).sum();
+        double average = Arrays.stream(array).mapToDouble(Double::doubleValue).average().getAsDouble();
+        System.out.println("Max value: " + max + "\nMin value: " + min + "\nSum of numbers: " + sum + "\nAverage of numbers: " + average);
     }
+
+
 }

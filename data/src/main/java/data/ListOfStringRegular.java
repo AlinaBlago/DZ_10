@@ -7,12 +7,18 @@ import java.util.stream.Collectors;
 
 
 public class ListOfStringRegular extends TaskServiceImpl {
-    public static List<String> cutMethod (List<String> text){
-        return text.stream()
-        .map(Character::toUpperCase)
-        .filter(c -> !Character.isDigit((Character) c))
-        .filter(c -> !Character.isSpaceChar((Character) c))
-        .mapToObj(c -> String.valueOf((char) c))
-        .collect(Collectors.toList());
+    public static List<String> cutMethod (List<String> text , String regex){
+
+        List<String> output =
+                text.stream()
+                        .map(s-> {
+                            String n = new String(s); // create new instance
+                            n = n.replaceAll(regex , " "); // mutate its state
+                            System.out.println(n);
+                            return n; // return mutated instance
+                        })
+                        .collect(Collectors.toList());
+
+        return output;
     }
 }
